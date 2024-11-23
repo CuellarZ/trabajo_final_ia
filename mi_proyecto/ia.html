@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Salud</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Enlace al archivo de estilos -->
+    <style>
+        /* Estilo para resaltar el apartado de respuesta */
+        #respuesta {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa; /* Fondo claro */
+            border: 4px solid #007bff; /* Borde azul más ancho */
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #333; /* Color del texto */
+        }
+
+        #respuesta span {
+            color: #007bff; /* Color azul para el contenido dinámico */
+        }
+
+        .btn {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/logo.png" alt="Logo de la Cruz Roja Colombiana" class="logo"> <!-- Logo -->
+        <h1>Formulario de Salud</h1>
+
+        <form id="healthForm" method="POST">
+            <!-- Campo de Edad -->
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="0" max="130" class="form-control" step="0.1" required>
+
+            <!-- Campo de Género -->
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+                <option value="3">Otro</option>
+            </select>
+
+            <!-- Campo Hipertensión -->
+            <label for="hipertenso">¿Es hipertenso?</label>
+            <select id="hipertenso" name="hipertenso" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Sí</option>
+                <option value="2">No</option>
+            </select>
+
+            <!-- Enfermedad del corazón -->
+            <label for="corazon">¿Enfermedad del corazón?</label>
+            <select id="corazon" name="corazon" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Sí</option>
+                <option value="2">No</option>
+            </select>
+
+            <!-- Estado Civil -->
+            <label for="casado">¿Es casado?</label>
+            <select id="casado" name="casado" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Sí</option>
+                <option value="2">No</option>
+            </select>
+
+            <!-- Tipo de trabajo -->
+            <label for="trabajo">¿Tipo de trabajo?</label>
+            <select id="trabajo" name="trabajo" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Niños</option>
+                <option value="2">Empleo gubernamental</option>
+                <option value="3">Nunca trabajó</option>
+                <option value="4">Privado</option>
+                <option value="5">Autónomo</option>
+            </select>
+
+            <!-- Tipo de residencia -->
+            <label for="residencia">¿Tipo de residencia?</label>
+            <select id="residencia" name="residencia" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Rural</option>
+                <option value="2">Urbana</option>
+            </select>
+
+            <!-- Nivel de glucosa -->
+            <label for="glucosa">Nivel de glucosa:</label>
+            <input type="number" id="glucosa" name="glucosa" min="0" max="500" class="form-control" step="0.1" required>
+
+            <!-- Índice de masa corporal -->
+            <label for="imc">Índice de masa corporal (IMC):</label>
+            <input type="number" id="imc" name="imc" min="0" max="100" class="form-control" step="0.1" required>
+
+            <!-- Fumador -->
+            <label for="fumador">¿Fumador?</label>
+            <select id="fumador" name="fumador" class="form-control" required>
+                <option value="0">Seleccione una opción</option>
+                <option value="1">Sí</option>
+                <option value="2">No</option>
+            </select>
+            <button type="button" onclick="enviarDatos()" class="btn btn-success mt-4">Enviar</button>
+
+            <div id="respuesta">
+                Respuesta: <span id="respuestaContenido">Esperando datos...</span>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        function enviarDatos() {
+            // Obtener los datos del formulario
+            const formData = new FormData(document.getElementById('healthForm'));
+
+            // Realizar la solicitud AJAX
+            fetch('php/guardar_datos.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar la respuesta en el HTML
+                document.getElementById('respuestaContenido').textContent = data.message;
+            })
+            .catch(error => {
+                document.getElementById('respuestaContenido').textContent = data.message;
+            });
+        }
+    </script>
+</body>
+</html>

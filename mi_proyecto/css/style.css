@@ -1,0 +1,136 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../img/fondo.gif') no-repeat center center fixed; /* Imagen de fondo */
+    background-size: cover; /* Cubrir todo el fondo sin distorsionarse */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Contenedor */
+.container {
+    background: white; /* Fondo blanco para que el formulario no se mezcle con el fondo de la imagen */
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.2); /* Sombra con profundidad */
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-top: 6px solid #D50032; /* Línea roja en la parte superior */
+}
+
+/* Logo */
+.container img {
+    width: 407px; /* Tamaño original del logo */
+    height: 124px; /* Tamaño original del logo */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Bordes redondeados para el logo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para el logo */
+}   
+
+/* Títulos */
+.container h1 {
+    font-size: 2rem;
+    color: #D50032; /* Rojo de la Cruz Roja */
+    margin-bottom: 20px;
+    font-weight: 700; /* Negrita para el título */
+    letter-spacing: 1px; /* Espaciado entre letras para un estilo más moderno */
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Bordes redondeados */
+    width: 100%;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Efecto en los inputs */
+input:focus, select:focus {
+    border-color: #D50032; /* Bordes rojos cuando se enfoca */
+    box-shadow: 0 0 5px rgba(213, 0, 50, 0.5); /* Sombra suave alrededor cuando se enfoca */
+    background-color: #fff; /* Fondo blanco cuando se enfoca */
+}
+
+/* Botones */
+button, .btn {
+    background-color: #D50032; /* Rojo de la Cruz Roja */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave */
+    width: 100%;
+    font-weight: 600;
+}
+
+/* Efecto hover en los botones */
+button:hover, .btn:hover {
+    background-color: #B71C1C; /* Rojo más oscuro */
+    transform: translateY(-3px); /* Elevación al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el botón */
+}
+
+/* Grupo de botones */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Ajuste en el texto "¿Ya tienes cuenta? Iniciar Sesion" */
+.container .login-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Sombra en la parte inferior del contenedor */
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.3); /* Efecto de luz sutil */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: -1; /* Coloca la sombra por debajo del contenido */
+}
